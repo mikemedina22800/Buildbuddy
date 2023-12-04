@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Button, Paper, Input } from "@mui/material"
+import { Button, Paper } from "@mui/material"
 import { Link } from "react-router-dom"
 import { RegisterAPI } from "../../api/AuthApi"
 

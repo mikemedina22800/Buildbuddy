@@ -30,10 +30,10 @@ const Login = () => {
       <div className="mb-8 h-20 w-20 flex justify-center items-center border-black border-2 rounded-full">Logo</div>
       <form onSubmit={login} >
         <Paper className="w-96 px-4 py-2">
-          <Input type="email" disableUnderline className="w-96" placeholder="Email" value={email} required onChange={(e) => {setEmail(e.target.value)}}/>
+          <input type="email" className="w-full outline-none" placeholder="Email" value={email} required onChange={(e) => {setEmail(e.target.value)}}/>
         </Paper>
         <Paper className="w-96 px-4 py-2 my-8">
-          <Input type="password" disableUnderline className="w-96" placeholder="Password" value={password} required onChange={(e) => {setPassword(e.target.value)}}/>
+          <input type="password" className="w-full outline-none" placeholder="Password" value={password} required onChange={(e) => {setPassword(e.target.value)}}/>
         </Paper>
         <div className="w-96 flex justify-between mb-8">
           <Button type="submit" variant="contained">Login</Button>
