@@ -13,12 +13,12 @@ function App() {
     <HashRouter>
       <Routes>
         <Route path='/' element={<Auth/>}/>
-        <Route path='/user' element={<Layout/>}>
+        <Route path='/user/:id' element={<Layout/>}>
           <Route index element={<Home/>}/>
-          <Route path='/user/network' element={<Network/>}/>
-          <Route path='/user/jobs' element={<Jobs/>}/>
-          <Route path='/user/chat' element={<Chat/>}/>
-          <Route path='/user/alerts' element={<Alerts/>}/>
+          <Route path='/user/:id/network' element={<Network/>}/>
+          <Route path='/user/:id/:id/jobs' element={<Jobs/>}/>
+          <Route path='/user/:id/chat' element={<Chat/>}/>
+          <Route path='/user/:id/alerts' element={<Alerts/>}/>
         </Route>
       </Routes>
     </HashRouter>

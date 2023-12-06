@@ -1,17 +1,22 @@
 import { firestore } from '../firebaseConfig'
-import { addDoc, collection } from 'firebase/firestore'
+import { collection, doc, setDoc, onSnapshot } from 'firebase/firestore'
+import { toast } from "react-toastify"
 
-let dbRef = collection(firestore, 'posts')
-
-export const postStatus = (status) => {
-  let object = {
-    status: status
+export const postAPI = async (uid, postText) => {
+  try {
+    await setDoc(doc(firestore, 'posts', uid), { text: postText });
+    toast.success('Your post has been uploaded.');
+  } catch(err) {
+    toast.error('Your post failed to upload.');
   }
-  addDoc(dbRef, object)
-  .then((response) => {
-    console.log(response)
+}
+
+export const getPostsAPI = async () => {
+  onSnapshot(collection(firestore, 'posts'), res => {
+    console.log(
+      res.docs.map((docs) => {
+        return {...docs.data(), id: docs.id}
+      })
+    )
   })
-  .catch((err) => {
-    console.log(err);
-  } )
 }

@@ -3,7 +3,7 @@ import { Paper } from "@mui/material"
 import { RegisterAPI } from "../../../api/authAPI"
 import { EyeFilled, EyeInvisibleFilled } from "@ant-design/icons"
 import { toast } from "react-toastify"
-import { firestore } from "../../../firebaseConfig"
+import { firestore, storage } from "../../../firebaseConfig"
 import { doc, setDoc } from "firebase/firestore"
 
 const Register = ({setForm}) => {
@@ -14,17 +14,16 @@ const Register = ({setForm}) => {
   const [confirm, setConfirm] = useState('')
   const [inputType, setInputType] = useState('password')
 
-
   const register = (e) => {
     e.preventDefault()
     if (password === confirm) {
       e.preventDefault()
-      RegisterAPI(email, password).then((response) => {
-        const { uid } = response.user
+      RegisterAPI(email, password).then((res) => {
+        const { uid } = res.user
         setDoc(doc(firestore, 'users', uid), {
           name: `${firstName} ${lastName}`,
           email
-        })
+        });
       })
     } else {
       toast.error('Passwords do not match.')
@@ -38,13 +37,34 @@ const Register = ({setForm}) => {
   return (
     <form onSubmit={register}>
       <Paper className="w-96 px-4 py-2">
-        <input type='text' className="w-full outline-none" pattern="[A-za-z]+" placeholder="First Name" value={firstName} required onChange={(e) => {setFirstName(e.target.value)}}/>
+        <input 
+          type='text' 
+          className="w-full outline-none" 
+          pattern="[A-za-z]+" 
+          placeholder="First Name" 
+          value={firstName} 
+          required 
+          onChange={(e) => {setFirstName(e.target.value)}}
+        />
       </Paper>
       <Paper className="w-96 px-4 py-2 my-4">
-        <input type='text' className="w-full outline-none" pattern="[A-za-z]+" placeholder="Last Name" value={lastName} required onChange={(e) => {setLastName(e.target.value)}}/>
+        <input 
+          type='text' 
+          className="w-full outline-none" 
+          pattern="[A-za-z]+" 
+          placeholder="Last Name" 
+          value={lastName} 
+          required 
+          onChange={(e) => {setLastName(e.target.value)}}
+        />
       </Paper>
       <Paper className="w-96 px-4 py-2 mb-4">
-        <input type="email" className="w-full outline-none" placeholder="Email" value={email} required onChange={(e) => {setEmail(e.target.value)}}/>
+        <input 
+          type="email" 
+          className="w-full outline-none" 
+          placeholder="Email" value={email} 
+          required onChange={(e) => {setEmail(e.target.value)}}
+        />
       </Paper>
       <Paper className="w-96 px-4 py-2 flex justify-between">
       <input 

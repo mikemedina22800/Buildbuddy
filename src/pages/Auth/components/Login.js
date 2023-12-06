@@ -12,8 +12,8 @@ const Login = ({setForm}) => {
 
   const login = (e) => {
     e.preventDefault()
-    LoginAPI(email, password).then((response) => {
-      console.log(response)
+    LoginAPI(email, password).then((res) => {
+      console.log(res)
     })
   }
 

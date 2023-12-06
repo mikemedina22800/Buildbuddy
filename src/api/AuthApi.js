@@ -4,9 +4,9 @@ import { toast } from "react-toastify"
 
 export const LoginAPI = async (email, password) => {
   try {
-    const response = await signInWithEmailAndPassword(auth, email, password)
+    const res = await signInWithEmailAndPassword(auth, email, password)
     toast.success('Logged in!')
-    return response
+    return res
   } catch(err) {
     if (String(err).includes('invalid-credential')) {
       toast.error('Invalid email or password.')
@@ -19,9 +19,9 @@ export const LoginAPI = async (email, password) => {
 
 export const RegisterAPI = async (email, password) => {
   try {
-    const response = await createUserWithEmailAndPassword(auth, email, password)
+    const res = await createUserWithEmailAndPassword(auth, email, password)
     toast.success('Logged in!')
-    return response
+    return res
   } catch(err) {
     if (String(err).includes('invalid-email')) {
       toast.error('Invalid email.')

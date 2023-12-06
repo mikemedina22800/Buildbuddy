@@ -29,19 +29,19 @@ const Auth = () => {
   const navigate = useNavigate()
   
   useEffect(() => {
-    onAuthStateChanged(auth, response => {
-      if (response?.accessToken) {
-        navigate('/user')
+    onAuthStateChanged(auth, res => {
+      if (res?.accessToken) {
+        navigate(`/user/${auth.currentUser.uid}`)
       }
     })
   }, [])
 
   const logInWithGoogle = () => {
-    GoogleAuthAPI().then((response) => {
-      console.log(response)
-      const uid = response.user.uid
-      const name = response.user.displayName
-      const email = response.user.email
+    GoogleAuthAPI().then((res) => {
+      console.log(res)
+      const uid = res.user.uid
+      const name = res.user.displayName
+      const email = res.user.email
       setDoc(doc(firestore, 'users', uid), {
         name,
         email
