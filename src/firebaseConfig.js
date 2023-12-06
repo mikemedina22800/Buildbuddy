@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDfJ5w2_fv_Wzv3N7vERhl0quwAF7k8rFM",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "get-in-contract.firebaseapp.com",
   projectId: "get-in-contract",
   storageBucket: "get-in-contract.appspot.com",

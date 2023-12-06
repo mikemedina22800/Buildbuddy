@@ -8,6 +8,7 @@ import pfp from '../../images/pfp.svg'
 import { getPostsAPI } from "../../api/firestoreAPI"
 
 const Home = () => {
+  
   const uid = useParams().id
 
   useEffect(() => {

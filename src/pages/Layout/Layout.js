@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { Outlet } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Outlet, useParams, useNavigate, useLocation } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { signOut } from "firebase/auth"
 import { auth } from "../../firebaseConfig"
@@ -8,10 +8,18 @@ import { Tooltip, Paper, IconButton } from "@mui/material"
 import pfp from '../../images/pfp.svg'
 
 const Layout = () => {
+  const uid = useParams().id
+  
+  const location = useLocation()
+  
+  const navigate = useNavigate()
 
-  const logOut = () => {
-    signOut(auth)
-  }
+
+  useEffect(() => {
+    if (uid != auth.currentUser?.uid) {
+      navigate('/')
+    }
+  }, [location])
 
   const [shade, setShade] = useState('!bg-gray-200')
 
@@ -26,42 +34,42 @@ const Layout = () => {
           </Paper>
         </div>
         <Tooltip title="Home" placement="bottom" arrow>
-          <Link to="/user">
+          <Link to={`/user/${uid}`}>
             <IconButton>
               <Home className="!text-4xl"/>
             </IconButton>
           </Link>
         </Tooltip>
         <Tooltip title="Network" placement="bottom" arrow>
-          <Link to="/user/network">
+          <Link to={`/user/${uid}/network`}>
             <IconButton>
               <Group className="!text-4xl"/>
             </IconButton>
           </Link>
         </Tooltip>
         <Tooltip title="Jobs" placement="bottom" arrow>
-          <Link to="/user/jobs">
+          <Link to={`/user/${uid}/jobs`}>
             <IconButton>
               <Work className="!text-4xl"/>
             </IconButton>
           </Link>
         </Tooltip>
         <Tooltip title="Chat" placement="bottom" arrow>
-          <Link to="/user/chat">
+          <Link to={`/user/${uid}/chat`}>
             <IconButton>
               <Sms className="!text-4xl"/>
             </IconButton>
           </Link>
         </Tooltip>
         <Tooltip title="Alerts" placement="bottom" arrow>
-          <Link to="/user/alerts">
+          <Link to={`/user/${uid}/alerts`}>
             <IconButton>
               <Notifications className="!text-4xl"/>
             </IconButton>
           </Link>
         </Tooltip>
-        <Tooltip onClick={logOut} title="Log Out" placement="bottom" arrow>
-          <IconButton>
+        <Tooltip title="Log Out" placement="bottom" arrow>
+          <IconButton onClick={() => {signOut(auth)}}>
             <Logout className="!text-4xl"/>
           </IconButton>
         </Tooltip>

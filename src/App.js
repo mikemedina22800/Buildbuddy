@@ -16,7 +16,7 @@ function App() {
         <Route path='/user/:id' element={<Layout/>}>
           <Route index element={<Home/>}/>
           <Route path='/user/:id/network' element={<Network/>}/>
-          <Route path='/user/:id/:id/jobs' element={<Jobs/>}/>
+          <Route path='/user/:id/jobs' element={<Jobs/>}/>
           <Route path='/user/:id/chat' element={<Chat/>}/>
           <Route path='/user/:id/alerts' element={<Alerts/>}/>
         </Route>
