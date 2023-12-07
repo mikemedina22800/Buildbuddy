@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/repo-name/static/css/main.dd9b12ec.css",
+    "main.js": "/repo-name/static/js/main.25c0cffa.js",
+    "static/media/MiamiBeach.mp4": "/repo-name/static/media/MiamiBeach.95bbc813c6795b57c0aa.mp4",
+    "static/media/construction.png": "/repo-name/static/media/construction.3cb308ec3bbc3379a1c4.png",
+    "static/media/apple.svg": "/repo-name/static/media/apple.c3a4aa3c536f90106089b895a8a8db4b.svg",
+    "static/media/google.svg": "/repo-name/static/media/google.85078161c85c9374b18a7212c53637ae.svg",
+    "static/media/pfp.svg": "/repo-name/static/media/pfp.b4723ab19a13b47db61a0028497d6bd0.svg",
+    "index.html": "/repo-name/index.html",
+    "main.dd9b12ec.css.map": "/repo-name/static/css/main.dd9b12ec.css.map",
+    "main.25c0cffa.js.map": "/repo-name/static/js/main.25c0cffa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dd9b12ec.css",
+    "static/js/main.25c0cffa.js"
+  ]
+}
