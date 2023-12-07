@@ -8,7 +8,7 @@ import apple from './../../images/apple.svg'
 import { GoogleAuthAPI } from "../../api/authAPI"
 import { auth } from '../../firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
-import { firestore } from "../../firebaseConfig"
+import { db } from "../../firebaseConfig"
 import { doc, setDoc } from "firebase/firestore"
 
 const Auth = () => {
@@ -42,7 +42,7 @@ const Auth = () => {
       const uid = res.user.uid
       const name = res.user.displayName
       const email = res.user.email
-      setDoc(doc(firestore, 'users', uid), {
+      setDoc(doc(db, 'users', uid), {
         name,
         email
       })

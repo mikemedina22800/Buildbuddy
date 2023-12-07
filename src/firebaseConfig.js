@@ -9,13 +9,13 @@ const firebaseConfig = {
   projectId: "get-in-contract",
   storageBucket: "get-in-contract.appspot.com",
   messagingSenderId: "1006244442717",
-  appId: "1:1006244442717:web:06c3f9cbcaa4611ea9d3b4",
-  measurementId: "G-1L37C00V60"
+  appId: "1:1006244442717:web:8f155ba7361693eda9d3b4",
+  measurementId: "G-W2WPK0PQCW"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
-const firestore = getFirestore(app)
+const db = getFirestore(app)
 const storage = getStorage(app)
 
-export { auth, app, firestore, storage };
+export { auth, app, db, storage };

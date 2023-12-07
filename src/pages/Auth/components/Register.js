@@ -3,7 +3,7 @@ import { Paper } from "@mui/material"
 import { RegisterAPI } from "../../../api/authAPI"
 import { EyeFilled, EyeInvisibleFilled } from "@ant-design/icons"
 import { toast } from "react-toastify"
-import { firestore, storage } from "../../../firebaseConfig"
+import { db, storage } from "../../../firebaseConfig"
 import { doc, setDoc } from "firebase/firestore"
 
 const Register = ({setForm}) => {
@@ -20,7 +20,7 @@ const Register = ({setForm}) => {
       e.preventDefault()
       RegisterAPI(email, password).then((res) => {
         const { uid } = res.user
-        setDoc(doc(firestore, 'users', uid), {
+        setDoc(doc(db, 'users', uid), {
           name: `${firstName} ${lastName}`,
           email
         });

@@ -7,10 +7,11 @@ import pfp from '../../../images/pfp.svg'
 
 const Post = ({uid, togglePost, isPostOpen}) => {
 
-  const [postText, setPostText] = useState('')
+  const [text, setText] = useState('')
 
-  const makePost = () => {
-    postAPI(uid, postText)
+  const makePost = (e) => {
+    e.preventDefault()
+    postAPI(uid, text)
     togglePost()
   }
 
@@ -24,8 +25,8 @@ const Post = ({uid, togglePost, isPostOpen}) => {
         <textarea 
           className="w-full resize-none h-96 p-5 mt-5 outline-none" 
           placeholder="What do you want to talk about?" 
-          value={postText} 
-          onChange={(e) => {setPostText(e.target.value)}}
+          value={text} 
+          onChange={(e) => {setText(e.target.value)}}
         />
         <div className="flex w-full justify-end">
           <Tooltip title="Add Emoji" placement="top" arrow>
@@ -72,7 +73,7 @@ const Post = ({uid, togglePost, isPostOpen}) => {
           </Tooltip>
         </div>
         <div className="flex justify-end">
-          <button type="submit" className={`${postText === '' ? 'bg-gray-400 pointer-events-none' : 'bg-blue-600'} duration-200 rounded px-5 py-1 w-fit text-white font-bold outline-none`}>Post</button>
+          <button type="submit" className={`${text === '' ? 'bg-gray-400 pointer-events-none' : 'bg-blue-600'} duration-200 rounded px-5 py-1 w-fit text-white font-bold outline-none`}>Post</button>
         </div>
       </form>
     </Modal>

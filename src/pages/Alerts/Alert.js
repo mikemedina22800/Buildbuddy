@@ -1,6 +1,6 @@
 const Alerts = () => {
   return (
-    <div>Alertd</div>
+    <div>Alerts</div>
   )
 }
 

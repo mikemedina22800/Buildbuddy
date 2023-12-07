@@ -13,7 +13,7 @@ export const LoginAPI = async (email, password) => {
     } else {
       toast.error('An unexpected error has occurred.')
     }
-    return err
+    console.log(err)
   }
 }
 
@@ -28,7 +28,7 @@ export const RegisterAPI = async (email, password) => {
     } else {
       toast.error('An unexpected error has occurred.')
     }
-    return err
+    console.log(err)
   }
 }
 
@@ -37,6 +37,6 @@ export const GoogleAuthAPI = async () => {
     const googleProvider = new GoogleAuthProvider()
     return signInWithPopup(auth, googleProvider) 
   } catch (err) {
-    return err
+    console.log(err)
   }
 }
