@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Get-In-Contract/static/css/main.dd9b12ec.css",
-    "main.js": "/Get-In-Contract/static/js/main.e0431cb8.js",
+    "main.css": "/Get-In-Contract/static/css/main.95dc30c3.css",
+    "main.js": "/Get-In-Contract/static/js/main.ce8b959b.js",
     "static/media/MiamiBeach.mp4": "/Get-In-Contract/static/media/MiamiBeach.95bbc813c6795b57c0aa.mp4",
     "static/media/construction.png": "/Get-In-Contract/static/media/construction.3cb308ec3bbc3379a1c4.png",
+    "index.html": "/Get-In-Contract/index.html",
     "static/media/apple.svg": "/Get-In-Contract/static/media/apple.c3a4aa3c536f90106089b895a8a8db4b.svg",
     "static/media/google.svg": "/Get-In-Contract/static/media/google.85078161c85c9374b18a7212c53637ae.svg",
     "static/media/pfp.svg": "/Get-In-Contract/static/media/pfp.b4723ab19a13b47db61a0028497d6bd0.svg",
-    "index.html": "/Get-In-Contract/index.html",
-    "main.dd9b12ec.css.map": "/Get-In-Contract/static/css/main.dd9b12ec.css.map",
-    "main.e0431cb8.js.map": "/Get-In-Contract/static/js/main.e0431cb8.js.map"
+    "main.95dc30c3.css.map": "/Get-In-Contract/static/css/main.95dc30c3.css.map",
+    "main.ce8b959b.js.map": "/Get-In-Contract/static/js/main.ce8b959b.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd9b12ec.css",
-    "static/js/main.e0431cb8.js"
+    "static/css/main.95dc30c3.css",
+    "static/js/main.ce8b959b.js"
   ]
 }
