@@ -33,35 +33,35 @@ const Layout = () => {
           </Paper>
         </div>
         <Tooltip title="Home" placement="bottom" arrow>
-          <Link to={`/user/${uid}`}>
+          <Link to={`/${uid}`}>
             <IconButton>
               <Home className="!text-4xl"/>
             </IconButton>
           </Link>
         </Tooltip>
         <Tooltip title="Network" placement="bottom" arrow>
-          <Link to={`/user/${uid}/network`}>
+          <Link to={`/${uid}/network`}>
             <IconButton>
               <Group className="!text-4xl"/>
             </IconButton>
           </Link>
         </Tooltip>
         <Tooltip title="Jobs" placement="bottom" arrow>
-          <Link to={`/user/${uid}/jobs`}>
+          <Link to={`/${uid}/jobs`}>
             <IconButton>
               <Work className="!text-4xl"/>
             </IconButton>
           </Link>
         </Tooltip>
         <Tooltip title="Chat" placement="bottom" arrow>
-          <Link to={`/user/${uid}/chat`}>
+          <Link to={`/${uid}/chat`}>
             <IconButton>
               <Sms className="!text-4xl"/>
             </IconButton>
           </Link>
         </Tooltip>
         <Tooltip title="Alerts" placement="bottom" arrow>
-          <Link to={`/user/${uid}/alerts`}>
+          <Link to={`/${uid}/alerts`}>
             <IconButton>
               <Notifications className="!text-4xl"/>
             </IconButton>
