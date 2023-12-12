@@ -10,6 +10,7 @@ import { auth } from '../../firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { db } from "../../firebaseConfig"
 import { doc, setDoc } from "firebase/firestore"
+import { Apple } from "@mui/icons-material"
 
 const Auth = () => {
   const [form, setForm] = useState('login')
@@ -60,7 +61,7 @@ const Auth = () => {
           <h1>Log In or Register with Google</h1>
           </div>
         <div className="w-96 cursor-pointer font-bold py-3 rounded-3xl  flex items-center justify-center bg-black text-white">
-          <img className="h-5 w-5 mr-2 bg-black" src={apple}/>
+          <Apple className="!text-white"/>
           <h1>Log In or Register with Apple</h1>
         </div>
       </div>
