@@ -22,7 +22,8 @@ const Register = ({toggleForm}) => {
         const { uid } = res.user
         setDoc(doc(db, 'users', uid), {
           name: `${firstName} ${lastName}`,
-          email
+          email,
+          uid
         });
       })
     } else {

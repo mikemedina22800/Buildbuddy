@@ -39,7 +39,8 @@ const Auth = () => {
       const email = res.user.email
       setDoc(doc(db, 'users', uid), {
         name,
-        email
+        email,
+        uid
       })
     }, [])
   }

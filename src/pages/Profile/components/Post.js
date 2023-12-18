@@ -1,29 +1,29 @@
 import { useState } from "react"
 import { IconButton, Tooltip } from "@mui/material"
 import { Image, CalendarMonth, Celebration, EmojiEmotions, Work, BarChart, Description, AssignmentInd } from "@mui/icons-material"
-import { postAPI } from "../../../api/firestoreAPI"
+import { post } from "../../../api/firestoreAPI"
 import Modal from "antd/es/modal/Modal"
 import pfp from '../../../images/pfp.png'
 
-const Post = ({uid, togglePost, isPostOpen}) => {
+const Post = ({ uid, togglePost, isPostOpen, name, profilePic }) => {
 
   const [text, setText] = useState('')
 
   const makePost = (e) => {
     e.preventDefault()
-    postAPI(uid, text)
+    post(uid, text)
     togglePost()
   }
 
   return (
     <Modal open={isPostOpen} onCancel={togglePost} footer={null}>
       <div className="flex items-center">
-        <img src={pfp} className="rounded-full mr-2 h-10 w-10"/>
-        <div className="text-2xl font-bold">Name</div>
+        <div className="w-12 h-12 mr-4 rounded-full bg-cover" style={{backgroundImage:`url(${ profilePic ? profilePic : pfp })`}}/>
+        <div className="text-2xl font-bold">{name}</div>
       </div>
       <form onSubmit={makePost}>
         <textarea 
-          className="w-full resize-none h-96 p-5 mt-5 outline-none" 
+          className="w-full resize-none h-96 p-5 mt-5 outline-none text-lg" 
           placeholder="What do you want to talk about?" 
           value={text} 
           onChange={(e) => {setText(e.target.value)}}

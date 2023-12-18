@@ -27,8 +27,8 @@ const Layout = () => {
   }, [])
 
   return (
-    <div className='w-screen h-screen top-0 fixed bg-gray-100'>
-      <Paper className="h-20 w-screen !bg-gray-200 !rounded-none flex items-center justify-around">
+    <div className='w-screen h-screen bottom-0 fixed bg-gray-100'>
+      <Paper className="h-20 w-screen !bg-gray-200 !rounded-none flex items-center justify-between px-5 lg:justify-around">
         <Paper className='sm:w-96 w-72 px-4 py-2 !transition-colors flex items-center bg-white'>
           <Search/>
           <input className="w-full bg-transparent outline-none ml-2" placeholder="Search..."/>
@@ -95,49 +95,49 @@ const Layout = () => {
             boxShadow: "0 0 2px black",
             clipPath: "inset(0px -2px -2px -2px)"
           }}>
-            <Tooltip title="Home" placement="left" arrow>
+            <Tooltip title="Home" placement="bottom" arrow>
               <Link to={`/${uid}`}>
                 <IconButton>
                   <Home className="!text-4xl"/>
                 </IconButton>
               </Link>
             </Tooltip>
-            <Tooltip title="Profile" placement="left" arrow>
+            <Tooltip title="Profile" placement="bottom" arrow>
               <Link to={`/${uid}/profile`}>
                 <IconButton>
                   <AccountBox className="!text-4xl"/>
                 </IconButton>
               </Link>
             </Tooltip>
-            <Tooltip title="Network" placement="left" arrow>
+            <Tooltip title="Network" placement="bottom" arrow>
               <Link to={`/${uid}/network`}>
                 <IconButton>
                   <Group className="!text-4xl"/>
                 </IconButton>
               </Link>
             </Tooltip>
-            <Tooltip title="Jobs" placement="left" arrow>
+            <Tooltip title="Jobs" placement="bottom" arrow>
               <Link to={`/${uid}/jobs`}>
                 <IconButton>
                   <Work className="!text-4xl"/>
                 </IconButton>
               </Link>
             </Tooltip>
-            <Tooltip title="Chat" placement="left" arrow>
+            <Tooltip title="Chat" placement="bottom" arrow>
               <Link to={`/${uid}/chat`}>
                 <IconButton>
                   <Sms className="!text-4xl"/>
                 </IconButton>
               </Link>
             </Tooltip>
-            <Tooltip title="Alerts" placement="left" arrow>
+            <Tooltip title="Alerts" placement="bottom" arrow>
               <Link to={`/${uid}/alerts`}>
                 <IconButton>
                   <Notifications className="!text-4xl"/>
                 </IconButton>
               </Link>
             </Tooltip>
-            <Tooltip title="Log Out" placement="left" arrow>
+            <Tooltip title="Log Out" placement="bottom" arrow>
               <IconButton onClick={() => {signOut(auth)}}>
                 <Logout className="!text-4xl"/>
               </IconButton>

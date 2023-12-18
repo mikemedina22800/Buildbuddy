@@ -1,27 +1,22 @@
 import { useState, useEffect } from "react"
-import { Paper, Tooltip } from "@mui/material"
-import { useParams, useLocation, useNavigate } from "react-router-dom"
-import pfp from '../../images/pfp.png'
-import { auth } from "../../firebaseConfig"
-import { storage } from "../../firebaseConfig"
-import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage'
-import { toast } from "react-toastify"
+import { useNavigate, useParams, useLocation } from "react-router-dom"
+import { auth, storage } from "../../firebaseConfig"
+import Post from "./components/Post"
+import Header from "./components/Header"
+import { getUserData } from "../../api/firestoreAPI"
+import { ref, listAll, getDownloadURL } from 'firebase/storage'
 
 const Profile = () => {
-  const [profilePic, setProfilePic] = useState(null)
-  const [newProfilePic, setNewProfilePic] = useState(null)
-  const [banner, setBanner] = useState(null)
-  const [newBanner, setNewBanner] = useState(null)
-
   const path = useParams().id
   const uid = auth?.currentUser?.uid
   const navigate = useNavigate()
   const location = useLocation()
+  const [profilePic, setProfilePic] = useState(null)
+  const [banner, setBanner] = useState(null)
 
   useEffect(() => {
     const imagesRef = ref(storage, `${path}/`)
     listAll(imagesRef).then((res) => {
-      console.log(res)
       res.items.map((file) => {
         if (file._location.path_.includes('profile_pic')) {
           getDownloadURL(file).then((url) => {
@@ -35,69 +30,44 @@ const Profile = () => {
       })
     })
   }, [profilePic, banner])
+  
+  const [name, setName] = useState(null)
+  const [isPostOpen, setIsPostOpen] = useState(false)
+
+  useEffect(() => {
+    getUserData().then((res) => {
+      console.log(res)
+      setName(res[0].name)
+    })
+  }, [])
 
   useEffect(() => {
     if (path != uid) {
       navigate(`/${uid}/profile`)
     }
   }, [location])
-  
-  const updateProfilePic = async () => {
-    const imageRef = ref(storage, `${path}/profile_pic`)
-    try {
-      uploadBytes(imageRef, newProfilePic).then(() => {
-        toast.success('Your profile picture was updated!')
-      })
-    } catch {
-      toast.error('Your profile picture failed to update.')
-    }
+
+  const togglePost = () => {
+    isPostOpen == false ? setIsPostOpen(true) : setIsPostOpen(false)
   }
-
-  const updatebanner = async () => {
-    const imageRef = ref(storage, `${path}/banner`)
-    try {
-      uploadBytes(imageRef, newBanner).then(() => {
-        toast.success('Your banner was updated!')
-      })
-    } catch {
-      toast.error('Your banner failed to update.')
-    }
-  }
-
-  useEffect(() => {
-    if (newProfilePic) {
-      updateProfilePic()
-    }
-  }, [newProfilePic])
-
-  useEffect(() => {
-    if (newBanner) {
-      updatebanner()
-    }
-  }, [newBanner])
 
   return (
-    <div className="mt-20 flex flex-col items-center justify-center">
-      <Paper className="w-[64rem] h-[32rem] !bg-gray-200">
-        <Tooltip title="Update Banner" placement="top" arrow>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => {setNewBanner(e.target.files[0])}} 
-            className="h-48 w-full bg-gray-400 bg-cover hover:cursor-pointer text-transparent" 
-            style={{backgroundImage:`url(${banner})`}}
-          />
-        </Tooltip>
-        <Tooltip title="Update Profile Picture" placement="top" arrow>
-          <input 
-            type="file"
-            accept="image/*" 
-            onChange={(e) => {setNewProfilePic(e.target.files[0])}} 
-            className="hover:cursor-pointer rounded-full w-32 h-32 ml-4 -translate-y-16 bg-cover cursor-pointer text-transparent" 
-            style={{backgroundImage:`url(${ profilePic ? profilePic : pfp })`}}
-          />
-        </Tooltip>
-      </Paper>
+    <div className="w-screen h-[calc(100vh-5rem)] !bg-gray-200 justify-center">
+      <Header
+        profilePic={profilePic} 
+        setProfilePic={setProfilePic}
+        banner={banner}
+        setBanner={setBanner}
+        name={name}
+        togglePost={togglePost}
+      />
+      <Post 
+        uid={uid} 
+        togglePost={togglePost} 
+        isPostOpen={isPostOpen} 
+        name={name} 
+        profilePic={profilePic} 
+      />
     </div>
   )
 }
