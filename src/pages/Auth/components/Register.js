@@ -3,10 +3,10 @@ import { Paper } from "@mui/material"
 import { RegisterAPI } from "../../../api/authAPI"
 import { EyeFilled, EyeInvisibleFilled } from "@ant-design/icons"
 import { toast } from "react-toastify"
-import { db, storage } from "../../../firebaseConfig"
+import { db } from "../../../firebaseConfig"
 import { doc, setDoc } from "firebase/firestore"
 
-const Register = ({setForm}) => {
+const Register = ({toggleForm}) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -36,7 +36,7 @@ const Register = ({setForm}) => {
 
   return (
     <form onSubmit={register}>
-      <Paper className="w-96 px-4 py-2">
+      <Paper className="sm:w-96 w-80 px-4 py-2">
         <input 
           type='text' 
           className="w-full outline-none" 
@@ -47,7 +47,7 @@ const Register = ({setForm}) => {
           onChange={(e) => {setFirstName(e.target.value)}}
         />
       </Paper>
-      <Paper className="w-96 px-4 py-2 my-4">
+      <Paper className="sm:w-96 w-80 px-4 py-2 my-4">
         <input 
           type='text' 
           className="w-full outline-none" 
@@ -58,7 +58,7 @@ const Register = ({setForm}) => {
           onChange={(e) => {setLastName(e.target.value)}}
         />
       </Paper>
-      <Paper className="w-96 px-4 py-2 mb-4">
+      <Paper className="sm:w-96 w-80 px-4 py-2 mb-4">
         <input 
           type="email" 
           className="w-full outline-none" 
@@ -66,7 +66,7 @@ const Register = ({setForm}) => {
           required onChange={(e) => {setEmail(e.target.value)}}
         />
       </Paper>
-      <Paper className="w-96 px-4 py-2 flex justify-between">
+      <Paper className="sm:w-96 w-80 px-4 py-2 flex justify-between">
       <input 
         type={inputType} 
         className="w-full outline-none" 
@@ -82,7 +82,7 @@ const Register = ({setForm}) => {
         {inputType === 'text' && <EyeInvisibleFilled/>}
       </div>
     </Paper>
-    <Paper className="w-96 px-4 py-2 flex justify-between my-4">
+    <Paper className="sm:w-96 w-80 px-4 py-2 flex justify-between my-4">
       <input
         type={inputType}  
         className="w-full outline-none" 
@@ -98,9 +98,9 @@ const Register = ({setForm}) => {
         {inputType === 'text' && <EyeInvisibleFilled/>}
       </div>
       </Paper>
-      <div className="w-96 flex justify-between mb-8 text-white font-bold">
-        <button className="bg-blue-600 rounded-3xl px-4 py-2" type="submit">Register</button>
-        <button className="bg-blue-600 rounded-3xl px-4 py-2" onClick={() => {setForm('login')}}>Log In</button>
+      <div className="sm:w-96 w-80 flex justify-between mb-8 text-white font-bold">
+        <button className="bg-blue-600 rounded-3xl px-4 py-2 hover:scale-[105%] duration-100" type="submit">Register</button>
+        <button className="bg-blue-600 rounded-3xl px-4 py-2 hover:scale-[105%] duration-100" onClick={toggleForm}>Log In</button>
       </div>
     </form>
   )

@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "get-in-contract"
-  }
+    "default": "buildbuddy-bd582",
+    "staging": "buildbuddy-bd582"
+  },
+  "targets": {},
+  "etags": {}
 }

@@ -6,6 +6,7 @@ import Network from './pages/Network/Network';
 import Jobs from './pages/Jobs/Jobs';
 import Alerts from './pages/Alerts/Alert';
 import Chat from './pages/Chat/Chat';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   
@@ -19,6 +20,8 @@ function App() {
           <Route path='/:id/jobs' element={<Jobs/>}/>
           <Route path='/:id/chat' element={<Chat/>}/>
           <Route path='/:id/alerts' element={<Alerts/>}/>
+          <Route path='/:id/alerts' element={<Alerts/>}/>
+          <Route path='/:id/profile' element={<Profile/>}/>
         </Route>
       </Routes>
     </HashRouter>

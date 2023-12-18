@@ -1,31 +1,25 @@
 import { useState, useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { Paper, IconButton, Tooltip } from "@mui/material"
+import { useNavigate, useParams, useLocation } from "react-router-dom"
+import { Paper } from "@mui/material"
 import { auth } from "../../firebaseConfig"
-import { onAuthStateChanged } from "firebase/auth"
 import Post from "./components/Post"
-import pfp from '../../images/pfp.svg'
+import pfp from '../../images/pfp.png'
 import { getPostsAPI } from "../../api/firestoreAPI"
 
 const Home = () => {
-  
-  const uid = useParams().id
-
+  const path = useParams().id
+  const uid = auth?.currentUser?.uid
   const posts = getPostsAPI(uid)
+  const navigate = useNavigate()
+  const location = useLocation()
 
-  console.log(posts)
+  useEffect(() => {
+    if (path != uid) {
+      navigate(`/${uid}`)
+    }
+  }, [location])
 
   const [isPostOpen, setIsPostOpen] = useState(false)
-
-  const navigate = useNavigate()
-  
-  useEffect(() => {
-    onAuthStateChanged(auth, response => {
-      if (!response?.accessToken) {
-        navigate('/')
-      }
-    })
-  }, [])
 
   const togglePost = () => {
     isPostOpen == false ? setIsPostOpen(true) : setIsPostOpen(false)

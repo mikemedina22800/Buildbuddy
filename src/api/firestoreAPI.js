@@ -9,7 +9,7 @@ export const postAPI = async (uid, text) => {
     const docRef = doc(db, 'posts', postId);
 
     await setDoc(docRef, { uid, text, timestamp });
-    toast.success('Your post has been uploaded.');
+    toast.success('Your post has been uploaded!');
   } catch (err) {
     toast.error('Your post failed to upload.');
     console.log(err);

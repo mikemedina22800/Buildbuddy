@@ -1,16 +1,15 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getStorage } from 'firebase/storage'
+import { getStorage} from 'firebase/storage'
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: "get-in-contract.firebaseapp.com",
-  projectId: "get-in-contract",
-  storageBucket: "get-in-contract.appspot.com",
-  messagingSenderId: "1006244442717",
-  appId: "1:1006244442717:web:2ef0c77de3504a4da9d3b4",
-  measurementId: "G-W7L44Q3WJY"
+  apiKey: "AIzaSyDWS1bvw2lr9VT0yUHMIf6T5PcOjNDe1e4",
+  authDomain: "buildbuddy-bd582.firebaseapp.com",
+  projectId: "buildbuddy-bd582",
+  storageBucket: "buildbuddy-bd582.appspot.com",
+  messagingSenderId: "167309840961",
+  appId: "1:167309840961:web:0e7d0fae7466c344622cc0"
 };
 
 const app = initializeApp(firebaseConfig);

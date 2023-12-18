@@ -3,7 +3,7 @@ import { IconButton, Tooltip } from "@mui/material"
 import { Image, CalendarMonth, Celebration, EmojiEmotions, Work, BarChart, Description, AssignmentInd } from "@mui/icons-material"
 import { postAPI } from "../../../api/firestoreAPI"
 import Modal from "antd/es/modal/Modal"
-import pfp from '../../../images/pfp.svg'
+import pfp from '../../../images/pfp.png'
 
 const Post = ({uid, togglePost, isPostOpen}) => {
 

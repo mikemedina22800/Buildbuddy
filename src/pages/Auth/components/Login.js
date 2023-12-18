@@ -4,7 +4,7 @@ import { Paper, Tooltip } from "@mui/material"
 import { Help } from "@mui/icons-material"
 import { EyeFilled, EyeInvisibleFilled } from "@ant-design/icons"
 
-const Login = ({setForm}) => {
+const Login = ({toggleForm}) => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -23,10 +23,10 @@ const Login = ({setForm}) => {
 
   return (
     <form onSubmit={login} >
-      <Paper className="w-96 px-4 py-2 mb-4">
+      <Paper className="sm:w-96 w-80 px-4 py-2 mb-4">
         <input type="email" className="w-full outline-none" placeholder="Email" value={email} required onChange={(e) => {setEmail(e.target.value)}}/>
       </Paper>
-      <Paper className="w-96 px-4 py-2 flex justify-between mb-2">
+      <Paper className="sm:w-96 w-80 px-4 py-2 flex justify-between mb-2">
         <input type={inputType} className="w-full outline-none" placeholder="Password" value={password} required onChange={(e) => {setPassword(e.target.value)}}/>
         <div className="flex items-center !text-2xl">
           <div className="mr-1 cursor-pointer flex items-center" onClick={toggleVisibility}>
@@ -38,9 +38,9 @@ const Login = ({setForm}) => {
           </Tooltip>
         </div>
       </Paper>
-      <div className="w-96 flex justify-between mt-4 mb-8 text-white font-bold">
-        <button className="bg-blue-600 rounded-3xl px-4 py-2" type="submit">Log In</button>
-        <button className="bg-blue-600 rounded-3xl px-4 py-2" onClick={() => {setForm('register')}} variant="contained">Register</button>
+      <div className="sm:w-96 w-80 flex justify-between mt-4 mb-8 text-white font-bold">
+        <button className="bg-blue-600 rounded-3xl px-4 py-2 hover:scale-[105%] duration-100" type="submit">Log In</button>
+        <button className="bg-blue-600 rounded-3xl px-4 py-2 hover:scale-[105%] duration-100" onClick={toggleForm} variant="contained">Register</button>
       </div>
     </form>
   )
