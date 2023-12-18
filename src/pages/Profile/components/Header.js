@@ -95,7 +95,7 @@ const Header = ({ profilePic, setProfilePic, banner, setBanner, name, togglePost
             style={{backgroundImage:`url(${ profilePic ? profilePic : pfp })`}}
           />
         </Tooltip>
-        <div className="translate-x-4 -translate-y-4 flex items-center">
+        <div className="translate-x-4 -translate-y-6 flex items-center">
           <h1 className="!text-4xl font-bold mr-2">{name}</h1>
           <Tooltip title="Make a Post" placement="bottom" arrow>
             <IconButton onClick={togglePost}>
