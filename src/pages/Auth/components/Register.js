@@ -8,7 +8,7 @@ import { doc, setDoc } from "firebase/firestore"
 import { IconButton, Tooltip } from "@mui/material"
 import { ArrowCircleLeft, Handyman, Person, CheckCircle } from "@mui/icons-material"
 
-const Register = ({toggleForm}) => {
+const Register = ({openLogin}) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -52,11 +52,11 @@ const Register = ({toggleForm}) => {
   }
 
   return (
-    <form onSubmit={register}>
+    <form onSubmit={register} className="flex items-center flex-col">
       {accountTypeSelect && 
         <div className="flex flex-col items-center font-bold text-2xl">
           <h1>Are you a client or a vendor?</h1>
-          <div className="flex items-center justify-between w-96 my-4">
+          <div className="flex items-center justify-between w-96 mt-8">
             <div>
               {accountType === 'Client' && <CheckCircle className="fixed text-[lime]"/>}
               <Tooltip onClick={() => {setAccountType('Client')}} title="Client" placement="bottom" arrow>
@@ -74,11 +74,11 @@ const Register = ({toggleForm}) => {
               </Tooltip>
             </div>
           </div>
-          <button onClick={navigate} className={`${accountType === '' ? 'bg-gray-400 pointer-events-none' : 'bg-blue-600'} text-white rounded-[3rem] px-8 py-4 hover:scale-[105%] duration-100 type="submit`}>Next Step</button>
+          <button onClick={navigate} className={`${accountType === '' ? 'bg-gray-400 pointer-events-none' : 'bg-blue-600'} text-white my-8 type="submit bg-blue-600 text-xl rounded-2xl px-6 py-3`}>Next Step</button>
         </div>
       }
       {inputBoxes &&
-        <div className="flex flex-col items-center w-96">
+        <div className="flex flex-col items-center w-96 mb-8">
           <Paper className="w-full px-4 py-2">
             <input 
               type='text' 
@@ -125,7 +125,7 @@ const Register = ({toggleForm}) => {
             {inputType === 'text' && <EyeInvisibleFilled/>}
           </div>
         </Paper>
-        <Paper className="w-full px-4 py-2 flex justify-between my-4">
+        <Paper className="w-full px-4 py-2 flex justify-between mt-4">
           <input
             type={inputType}  
             className="w-full outline-none" 
@@ -140,17 +140,12 @@ const Register = ({toggleForm}) => {
             {inputType === 'password' && <EyeFilled/>}
             {inputType === 'text' && <EyeInvisibleFilled/>}
           </div>
-          </Paper>
-          <div className="w-full flex justify-between mb-8 text-white font-bold">
-            <button className="bg-blue-600 rounded-3xl px-4 py-2 text-white font-bold hover:scale-[105%] duration-100" type="submit">Register</button>
-            <button className="bg-blue-600 rounded-3xl px-4 py-2 hover:scale-[105%] duration-100" onClick={toggleForm}>Log In</button>
-          </div>
-          <div className="hover:scale-[105%] duration-100">
-            <Tooltip title="Previous" placement="bottom" arrow>
-              <ArrowCircleLeft onClick={navigate} className="!text-6xl !text-blue-600 hover:cursor-pointer"/>
-            </Tooltip>
-          </div>
-        </div>
+        </Paper>
+        <div className="flex justify-between items-center mt-8 w-full">
+          <ArrowCircleLeft onClick={navigate} className="!text-6xl !text-blue-600 cursor-pointer"/>
+          <button className="bg-blue-600 text-xl rounded-2xl px-6 py-3 text-white font-bold" type="submit">Register</button>
+        </div>      
+      </div>
       }
     </form>
   )
