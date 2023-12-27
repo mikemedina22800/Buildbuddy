@@ -22,11 +22,11 @@ const Login = ({openRegister, openResetPassword}) => {
   }
 
   return (
-    <form onSubmit={login} className="flex items-center flex-col">
-      <Paper className="sm:w-96 w-80 px-4 py-2 mb-4">
+    <form onSubmit={login} className="flex items-center flex-col sm:w-96 w-80">
+      <Paper className="w-full px-4 py-2 mb-4">
         <input type="email" className="w-full outline-none" placeholder="Email" value={email} required onChange={(e) => {setEmail(e.target.value)}}/>
       </Paper>
-      <Paper className="sm:w-96 w-80 px-4 py-2 flex justify-between">
+      <Paper className="w-full px-4 py-2 flex justify-between">
         <input type={inputType} className="w-full outline-none" placeholder="Password" value={password} required onChange={(e) => {setPassword(e.target.value)}}/>
         <div className="flex items-center !text-2xl">
           <div className="mr-1 cursor-pointer flex items-center" onClick={toggleVisibility}>

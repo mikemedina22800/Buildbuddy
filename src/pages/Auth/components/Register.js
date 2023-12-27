@@ -7,6 +7,8 @@ import { db } from "../../../firebaseConfig"
 import { doc, setDoc } from "firebase/firestore"
 import { IconButton, Tooltip } from "@mui/material"
 import { ArrowCircleLeft, Handyman, Person, CheckCircle } from "@mui/icons-material"
+import clientIcon from '../../../images/clientIcon.png'
+import vendorIcon from '../../../images/vendorIcon.png'
 
 const Register = ({openLogin}) => {
   const [firstName, setFirstName] = useState('')
@@ -61,7 +63,9 @@ const Register = ({openLogin}) => {
               {accountType === 'Client' && <CheckCircle className="fixed text-[lime]"/>}
               <Tooltip onClick={() => {setAccountType('Client')}} title="Client" placement="bottom" arrow>
                 <IconButton>
-                  <Person className="!text-9xl"/>
+                  <div className="h-40 w-40 flex justify-center">
+                    <img className="h-32" src={clientIcon}/>
+                  </div>
                 </IconButton>
               </Tooltip>
             </div>
@@ -69,7 +73,9 @@ const Register = ({openLogin}) => {
               {accountType === 'Vendor' && <CheckCircle className="fixed text-[lime]"/>}
               <Tooltip onClick={() => {setAccountType('Vendor')}}  title="Vendor" placement="bottom" arrow>
                 <IconButton>
-                  <Handyman className="!text-9xl"/>
+                  <div className="h-40 w-40 flex justify-center">
+                    <img className="h-32" src={vendorIcon}/>
+                  </div>
                 </IconButton>
               </Tooltip>
             </div>
@@ -78,7 +84,7 @@ const Register = ({openLogin}) => {
         </div>
       }
       {inputBoxes &&
-        <div className="flex flex-col items-center w-96 mb-8">
+        <div className="flex flex-col items-center sm:w-96 w-80 mb-8">
           <Paper className="w-full px-4 py-2">
             <input 
               type='text' 

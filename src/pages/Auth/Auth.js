@@ -10,8 +10,8 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { db } from "../../firebaseConfig"
 import { doc, setDoc } from "firebase/firestore"
 import { Apple } from "@mui/icons-material"
-import logo from "../../images/bblogo.png"
 import construction from "../../images/construction.png"
+import logo from '../../images/favicon.png'
 
 const Auth = () => {
   const [login, setLogin] = useState(true)
@@ -63,7 +63,8 @@ const Auth = () => {
   return (
     <div className="flex">
       <div className="lg:w-1/2 w-screen h-screen flex flex-col items-center justify-center bg-gray-100">
-        <img className="w-80 mb-8" src={logo} alt="logo"/>
+        <img className="sm:w-32 w-24 mb-2" src={logo} alt="logo"/>
+        <h1 className="sm:text-6xl text-5xl font-bold text-blue-600 mb-8" style={{fontFamily:'Rubik Doodle Shadow'}}>Build<span className="!text-red-600">buddy</span></h1>
         {login === true && <Login openResetPassword={openResetPassowrd}/>}
         {register === true && <Register/>}
         {resetPassword === true && <ResetPassword openLogin={openLogin}/>}
